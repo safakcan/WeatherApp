@@ -110,7 +110,6 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate,CLLocationMa
         
         var tempWeather = Weather(latitude: 0.0, longitude: 0.0)
     
-        
         if editingStyle == UITableViewCellEditingStyle.delete {
             //******hayır bu da calısmıyo ilkini siliyo normal table dan da silince
             if isSearching == false {
