@@ -11,26 +11,69 @@ import XCTest
 
 class AppWeatherTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+     let weatherData = MockData.readJsonWeather()
+     let forecastData = MockData.readJsonForecast()
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+    let locationName = "Afif"
+    let lat = 24.02
+    let long = 42.200000000000003
+    let humidity = 43
+    let temp = 24.14
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    func testParseWeatherData_NotNil() {
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        if let data = weatherData {
+            let testWeatherParser = JSONParser.parseWeather(data: data)
+            XCTAssertNotNil(testWeatherParser)
         }
     }
     
-}
+    func testParseWeatherData_cityName() {
+        
+        if let data = weatherData {
+            let testWeatherParser = JSONParser.parseWeather(data: data)
+            XCTAssertEqual(testWeatherParser.name, locationName)
+        }
+    }
+    
+    func testParseWeatherData_locationCorrect() {
+        
+        if let data = weatherData {
+            let testWeatherParser = JSONParser.parseWeather(data: data)
+            XCTAssertEqual(testWeatherParser.latitude, lat)
+            XCTAssertEqual(testWeatherParser.longitude, long)
+        }
+    }
+    
+    func testParseWeatherData_locationWrong() {
+
+        if let data = weatherData {
+            let testWeatherParser = JSONParser.parseWeather(data: data)
+            XCTAssertNotEqual(testWeatherParser.latitude, 20.0)
+            XCTAssertEqual(testWeatherParser.longitude, long)
+        }
+    }
+    
+        func testParseForecastData_NotNil() {
+            
+            if let data = forecastData {
+                let testForecastParser = JSONParser.parseForecast(data: data)
+                XCTAssertNotNil(testForecastParser)
+            }
+        }
+    func testParseForecastData_HumidityCheck() {
+        
+        if let data = forecastData {
+            let testForecastParser = JSONParser.parseForecast(data: data)
+            XCTAssertEqual(testForecastParser.first?.humidity, humidity)
+        }
+    }
+    func testParseForecastData_TempCheck() {
+        
+        if let data = forecastData {
+            let testForecastParser = JSONParser.parseForecast(data: data)
+            XCTAssertEqual(testForecastParser.first?.temp, temp)
+        }
+      }
+    }
+
