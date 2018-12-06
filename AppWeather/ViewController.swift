@@ -109,7 +109,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate,CLLocationMa
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         var tempWeather = Weather(latitude: 0.0, longitude: 0.0)
-        print("asd")
+    
         if editingStyle == UITableViewCellEditingStyle.delete {
             //******hayır bu da calısmıyo ilkini siliyo normal table dan da silince
             if isSearching == false {
