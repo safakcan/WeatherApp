@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     let apiHelper = ApiHelper()
+    let dataProvider = DataProvider(apiHandler: ApiHelperWithFramework())
     var counter = 0;
     
     var detailTableWeather = Weather(latitude: 0.0, longitude: 0.0)
@@ -108,10 +109,9 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate,CLLocationMa
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        var tempWeather = Weather(latitude: 0.0, longitude: 0.0)
-    
+        
         if editingStyle == UITableViewCellEditingStyle.delete {
-            //******hayır bu da calısmıyo ilkini siliyo normal table dan da silince
+    
             if isSearching == false {
                 weathers.remove(at: indexPath.row)
                 initialWeathers.remove(at: indexPath.row)
@@ -122,18 +122,15 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate,CLLocationMa
                         CoreDataBase.deleteData(at: index)
                         initialWeathers.remove(at: index)
                         weathers.remove(at: indexPath.row)
-                        //sanki dogru gidiyorum, coredatabse nerden siliyo hangi arrayden bilsem o silinmesi gereken seye esitliycem
+
                     }
                 }
-              
+                
             }
             tableView.reloadData()
-            //su an sadece normal tableViewden siliyorum. Search yaptıgımda orda siliyo gibi gosteriyo ama databaseden silmiyo ve aslında hiçbişe yapmıyo. bu else in içinde bişey yapıp databaseten de silmem lazım o seçtiğim ve sildiğim(tabledan-geçici) objeyi
-            
         }
     }
-    // isSearching i true/false yaparak initialWeathers ve weathertan silmeyi denedim ama sorun table dan silinmemesi değil. Table kısmı OKey. Weatherstan sildiğimde(yani searchle sildiğimde) databasete yanlıs yerden siliyor, çunku search yaptıgımızda gelen 1. veya 2. elemanı sildiğimizde databasedeki 1. veya 2. elemanı siliyor. orda secili olan elemanın databaseddeki indexine karsılık gelmesi lazım. burda isSearching trueken normal karsılık gelen indexi sil false ken karsılık geleni bul sil demem lazım
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         detailTableWeather = weathers[indexPath.row]
         performSegue(withIdentifier: "showDetail", sender: nil)
@@ -142,7 +139,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate,CLLocationMa
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         currentWeather = Weather(latitude: locValue.latitude, longitude: locValue.longitude)
-        apiHelper.fetchWeatherData(lat: (currentWeather?.latitude)!, long: (currentWeather?.longitude)!, apiCallType: ApiCallType.weatherWithCelcius ) { (callbackWeather) in
+        dataProvider.getWeatherData(lat: (currentWeather?.latitude)!, lon: (currentWeather?.longitude)!, apiCallType: ApiCallType.weatherWithCelcius ) { (callbackWeather) in
             self.currentWeather = callbackWeather
             DispatchQueue.main.async {
                 self.updateCurrentWeather()
@@ -155,13 +152,14 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate,CLLocationMa
             initialWeathers.append(contentsOf: array)
             print(array)
         }
+        
     }
     
     func getAllData() {
         if initialWeathers.count == 0 {
             return
         }
-        apiHelper.fetchWeatherData(lat: initialWeathers[counter].latitude, long: initialWeathers[counter].longitude, apiCallType: ApiCallType.weatherWithCelcius) { (myWeather) in
+        dataProvider.getWeatherData(lat: initialWeathers[counter].latitude, lon: initialWeathers[counter].longitude, apiCallType: ApiCallType.weatherWithCelcius) { (myWeather) in
             self.initialWeathers[self.counter] = myWeather
             if(self.counter + 1 < self.initialWeathers.count) {
                 self.counter += 1
