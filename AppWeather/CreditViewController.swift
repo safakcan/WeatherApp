@@ -10,10 +10,12 @@ import UIKit
 
 class CreditViewController: UIViewController  {
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var htmlView: UIWebView!
     
     
     override func viewDidLoad() {
         presentWebView()
+        htmlWebView()
     }
     
     func presentWebView() {
@@ -22,4 +24,10 @@ class CreditViewController: UIViewController  {
         
     }
     
+    func htmlWebView() {
+      
+          if let path = Bundle.main.path(forResource: "htmlStatic", ofType: "html") {
+            htmlView.loadRequest(URLRequest(url: URL(fileURLWithPath: path)) )
+        }
+    }
 }

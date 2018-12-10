@@ -40,12 +40,20 @@
                                     <constraint firstAttribute="height" constant="500" id="ksF-nm-hwA"/>
                                 </constraints>
                             </webView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqa-R6-XIF">
+                                <rect key="frame" x="0.0" y="20" width="375" height="77"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ym1-h1-jmX" firstAttribute="trailing" secondItem="j6h-V0-Odg" secondAttribute="trailing" id="5Th-MS-3KU"/>
                             <constraint firstItem="ym1-h1-jmX" firstAttribute="bottom" secondItem="j6h-V0-Odg" secondAttribute="bottom" id="5ph-va-PGF"/>
+                            <constraint firstItem="9CS-3G-M6Z" firstAttribute="top" secondItem="jqa-R6-XIF" secondAttribute="bottom" constant="5" id="O5x-pJ-Ya6"/>
+                            <constraint firstItem="jqa-R6-XIF" firstAttribute="top" secondItem="B1C-vC-fbT" secondAttribute="top" constant="20" id="OZd-2L-lDd"/>
                             <constraint firstItem="j6h-V0-Odg" firstAttribute="trailing" secondItem="9CS-3G-M6Z" secondAttribute="trailing" id="iNx-qA-7a1"/>
+                            <constraint firstItem="jqa-R6-XIF" firstAttribute="leading" secondItem="j6h-V0-Odg" secondAttribute="leading" id="jm8-Vh-6ui"/>
+                            <constraint firstItem="j6h-V0-Odg" firstAttribute="trailing" secondItem="jqa-R6-XIF" secondAttribute="trailing" id="l8W-zO-dmy"/>
                             <constraint firstItem="ym1-h1-jmX" firstAttribute="leading" secondItem="j6h-V0-Odg" secondAttribute="leading" id="r53-s2-byE"/>
                             <constraint firstItem="ym1-h1-jmX" firstAttribute="top" secondItem="9CS-3G-M6Z" secondAttribute="bottom" constant="5" id="un6-m6-gSb"/>
                             <constraint firstItem="9CS-3G-M6Z" firstAttribute="leading" secondItem="j6h-V0-Odg" secondAttribute="leading" id="x7a-AM-fmT"/>
@@ -53,6 +61,7 @@
                         <viewLayoutGuide key="safeArea" id="j6h-V0-Odg"/>
                     </view>
                     <connections>
+                        <outlet property="htmlView" destination="jqa-R6-XIF" id="FNG-gJ-9V9"/>
                         <outlet property="webView" destination="9CS-3G-M6Z" id="wA3-I7-td7"/>
                     </connections>
                 </viewController>

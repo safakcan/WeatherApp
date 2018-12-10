@@ -50,7 +50,6 @@ class AppWeatherTests: XCTestCase {
         if let data = weatherData {
             let testWeatherParser = JSONParser.parseWeather(data: data)
             XCTAssertNotEqual(testWeatherParser.latitude, 20.0)
-            XCTAssertEqual(testWeatherParser.longitude, long)
         }
     }
     
