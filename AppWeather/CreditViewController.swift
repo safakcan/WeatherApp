@@ -25,8 +25,8 @@ class CreditViewController: UIViewController  {
     }
     
     func htmlWebView() {
-      
-          if let path = Bundle.main.path(forResource: "htmlStatic", ofType: "html") {
+        
+        if let path = Bundle.main.path(forResource: "htmlStatic", ofType: "html") {
             htmlView.loadRequest(URLRequest(url: URL(fileURLWithPath: path)) )
         }
     }

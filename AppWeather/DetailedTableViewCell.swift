@@ -25,11 +25,11 @@ class DetailedTableViewCell: UIViewController {
     var weatherInCell = Weather(latitude: 0.0, longitude: 0.0)
     var tableArray: [FutureWeather]?
     var apiHelper = ApiHelper()
-    
+    var dataProvider = DataProvider(apiHandler: ApiHelperWithFramework())
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        apiHelper.fetchForecast(lat: weatherInCell.latitude, long: weatherInCell.longitude, apiCallType: ApiCallType.forecastWithCelcius) { (futureWeathers) in
+        dataProvider.getForecastData(lat: weatherInCell.latitude, long: weatherInCell.longitude, apiCallType: ApiCallType.forecastWithCelcius) { (futureWeathers) in
             DispatchQueue.main.async {
                 
                 self.tableArray = futureWeathers

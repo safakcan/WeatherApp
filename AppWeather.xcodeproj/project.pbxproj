@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		302211BFCB9301E9E4D45DE6 /* Pods_AppWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D1CD63F9EE29D7B096DC54 /* Pods_AppWeather.framework */; };
 		3FA9F486619458E985668B59 /* Pods_AppWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0300A74784404EAB58D877 /* Pods_AppWeatherTests.framework */; };
+		9207D6B621BE86EC0052ADFF /* ApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9207D6B521BE86EC0052ADFF /* ApiHandler.swift */; };
+		9207D6B821BE8A280052ADFF /* ApiHelperWithFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9207D6B721BE8A280052ADFF /* ApiHelperWithFramework.swift */; };
+		9207D6BA21BE8D8A0052ADFF /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9207D6B921BE8D8A0052ADFF /* DataProvider.swift */; };
 		920F48F521989D65008C073B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920F48F421989D65008C073B /* AppDelegate.swift */; };
 		920F48F721989D65008C073B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920F48F621989D65008C073B /* ViewController.swift */; };
 		920F48FA21989D65008C073B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920F48F821989D65008C073B /* Main.storyboard */; };
@@ -48,6 +51,9 @@
 		4004C2FE8B7C8B01C389253E /* Pods-AppWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppWeather/Pods-AppWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		809725257813F9667C6D478B /* Pods-AppWeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppWeatherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppWeatherTests/Pods-AppWeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8E0300A74784404EAB58D877 /* Pods_AppWeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppWeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9207D6B521BE86EC0052ADFF /* ApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHandler.swift; sourceTree = "<group>"; };
+		9207D6B721BE8A280052ADFF /* ApiHelperWithFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelperWithFramework.swift; sourceTree = "<group>"; };
+		9207D6B921BE8D8A0052ADFF /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		920F48F121989D65008C073B /* AppWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		920F48F421989D65008C073B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		920F48F621989D65008C073B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +153,9 @@
 				920F4921219D861A008C073B /* MapViewController.swift */,
 				92DDD03C21B9572F0061EB4F /* CreditViewController.swift */,
 				920F491721989FA9008C073B /* ApiHelper.swift */,
+				9207D6B921BE8D8A0052ADFF /* DataProvider.swift */,
+				9207D6B721BE8A280052ADFF /* ApiHelperWithFramework.swift */,
+				9207D6B521BE86EC0052ADFF /* ApiHandler.swift */,
 				920F492B21B8017F008C073B /* JSONParser.swift */,
 				920F49192198A0DD008C073B /* AppWeatherUtils.swift */,
 				920F48F821989D65008C073B /* Main.storyboard */,
@@ -292,15 +301,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AppWeather/Pods-AppWeather-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
@@ -314,15 +319,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-AppWeather-checkManifestLockResult.txt",
 			);
@@ -336,15 +337,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-AppWeatherTests-checkManifestLockResult.txt",
 			);
@@ -367,10 +364,13 @@
 				920F491E219B131B008C073B /* WeatherTableViewCell.swift in Sources */,
 				920F492421A41509008C073B /* DetailedTableViewCell.swift in Sources */,
 				920F492621AC311C008C073B /* FutureWeather.swift in Sources */,
+				9207D6B621BE86EC0052ADFF /* ApiHandler.swift in Sources */,
 				92DDD03D21B9572F0061EB4F /* CreditViewController.swift in Sources */,
 				920F4920219D82E1008C073B /* CoreDataBase.swift in Sources */,
+				9207D6B821BE8A280052ADFF /* ApiHelperWithFramework.swift in Sources */,
 				920F4922219D861A008C073B /* MapViewController.swift in Sources */,
 				920F491A2198A0DD008C073B /* AppWeatherUtils.swift in Sources */,
+				9207D6BA21BE8D8A0052ADFF /* DataProvider.swift in Sources */,
 				920F491821989FA9008C073B /* ApiHelper.swift in Sources */,
 				920F491C219B074E008C073B /* Weather.swift in Sources */,
 				920F48FD21989D65008C073B /* AppWeather.xcdatamodeld in Sources */,
