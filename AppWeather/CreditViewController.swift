@@ -12,7 +12,6 @@ class CreditViewController: UIViewController  {
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var htmlView: UIWebView!
     
-    
     override func viewDidLoad() {
         presentWebView()
         htmlWebView()
@@ -21,7 +20,6 @@ class CreditViewController: UIViewController  {
     func presentWebView() {
         let url = URL(string: "https://www.adesso.com.tr")
         webView.loadRequest(URLRequest(url: url!))
-        
     }
     
     func htmlWebView() {

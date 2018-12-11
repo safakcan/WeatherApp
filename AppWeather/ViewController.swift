@@ -173,9 +173,10 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate,CLLocationMa
             }
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let detailedCell = segue.destination as? DetailedTableViewCell {
+        if let detailedCell = segue.destination as? DetailViewController {
             detailedCell.weatherInCell = detailTableWeather
             DispatchQueue.main.async {
                 detailedCell.updateData()

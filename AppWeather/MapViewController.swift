@@ -33,9 +33,7 @@ class MapViewController: UIViewController{
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        
     }
-    
 }
 
 extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
@@ -90,13 +88,4 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         alert.addAction(noButton)
         present(alert,animated: true, completion: nil)
     }
-    func wrapLocation() {
-        
-        //        let location = Location(context: PersistanceService.context)
-        //        location.latitude = latitude
-        //        location.longitude = longitude
-        //        PersistanceService.saveContext()
-        //        ViewController.tableCells.append(location)
-    }
-    
 }

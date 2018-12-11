@@ -286,10 +286,10 @@
             </objects>
             <point key="canvasLocation" x="984.79999999999995" y="133.5832083958021"/>
         </scene>
-        <!--Detailed Table View Cell-->
+        <!--Detail View Controller-->
         <scene sceneID="4BG-4Z-2s7">
             <objects>
-                <viewController id="rSj-Rm-1hZ" customClass="DetailedTableViewCell" customModule="AppWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rSj-Rm-1hZ" customClass="DetailViewController" customModule="AppWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hvP-Uy-XP4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -479,12 +479,12 @@
                         <viewLayoutGuide key="safeArea" id="IxF-eT-dqg"/>
                     </view>
                     <connections>
+                        <outlet property="detailTableView" destination="gsK-10-mJ5" id="GgY-6C-ogO"/>
                         <outlet property="detailedCellDegree" destination="1Rl-Go-h2R" id="2GV-6p-GXF"/>
                         <outlet property="detailedCellImage" destination="89k-Le-hc4" id="p0H-79-zPa"/>
                         <outlet property="detailedCellName" destination="RE3-ym-arK" id="OzH-6T-4Tp"/>
                         <outlet property="humidity" destination="Bfr-WP-Den" id="YKH-mX-hVI"/>
                         <outlet property="rain" destination="wZj-nj-mb7" id="byg-uq-0Sd"/>
-                        <outlet property="tableViewDetail" destination="gsK-10-mJ5" id="GgY-6C-ogO"/>
                         <outlet property="wind" destination="9RG-fu-wEt" id="9r0-6m-dWK"/>
                     </connections>
                 </viewController>
