@@ -147,7 +147,7 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate,CLLocati
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         currentWeather = Weather(latitude: locValue.latitude, longitude: locValue.longitude)
-        dataProvider.getWeatherData(lat: (currentWeather?.latitude)!, lon: (currentWeather?.longitude)!, apiCallType: ApiCallType.weatherWithCelcius ) { (callbackWeather) in
+        dataProvider.getWeatherData(lat: (currentWeather?.latitude)!, lon: (currentWeather?.longitude)!, apiCallType: Settings.callTypeWeather ) { (callbackWeather) in
             self.currentWeather = callbackWeather
             DispatchQueue.main.async {
                 self.updateCurrentWeather()
@@ -169,7 +169,7 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate,CLLocati
         if initialWeathers.count == 0 {
             return
         }
-        dataProvider.getWeatherData(lat: initialWeathers[counter].latitude, lon: initialWeathers[counter].longitude, apiCallType: ApiCallType.weatherWithCelcius) { (myWeather) in
+        dataProvider.getWeatherData(lat: initialWeathers[counter].latitude, lon: initialWeathers[counter].longitude, apiCallType: Settings.callTypeWeather) { (myWeather) in
             self.initialWeathers[self.counter] = myWeather
             if(self.counter + 1 < self.initialWeathers.count) {
                 self.counter += 1

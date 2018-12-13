@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataProvider.getForecastData(lat: weatherInCell.latitude, long: weatherInCell.longitude, apiCallType: ApiCallType.forecastWithCelcius) { (futureWeathers) in
+        dataProvider.getForecastData(lat: weatherInCell.latitude, long: weatherInCell.longitude, apiCallType: Settings.callTypeForecast) { (futureWeathers) in
             DispatchQueue.main.async {
                 self.tableArray = futureWeathers
                 self.detailTableView.reloadData()
