@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class Weather {
     var latitude: Double!
     var longitude: Double!

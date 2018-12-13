@@ -9,10 +9,11 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     @IBAction func showTempType(_ sender: Any) {
-        isCelcius = !isCelcius
+        //isCelcius = !isCelcius
+        self.performSegue(withIdentifier: "mySegue", sender: nil)
     }
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -20,6 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var showDegree: UILabel!
     @IBOutlet weak var showWeatherImage: UIImageView!
     @IBOutlet weak var showCityName: UILabel!
+    
     
     var weathers = [Weather]()
     var initialWeathers = [Weather]()
@@ -39,6 +41,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
         let tempImageView = UIImageView(image: UIImage(named: "homeTableviewBackground"))
         tempImageView.frame = tabelView.frame
@@ -80,11 +83,16 @@ class ViewController: UIViewController {
         
         showCityName.text = currentWeather?.name
         showCityName.sizeToFit()
-        showWeatherImage.image = UIImage(data: (currentWeather?.image)!)
+        
+        if let img = currentWeather?.image {
+            let image = UIImage(data: img)
+            showWeatherImage.image = image
+        }
+        //showWeatherImage.image = UIImage(data: (currentWeather?.image)!)
     }
 }
 
-extension ViewController: UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,UISearchBarDelegate {
+extension HomeViewController: UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,UISearchBarDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -148,6 +156,8 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate,CLLocationMa
     }
     
     func addAllData () {
+        initialWeathers.removeAll()
+        
         CoreDataBase.retrieveData { (array) in
             initialWeathers.append(contentsOf: array)
             print(array)
@@ -173,9 +183,10 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate,CLLocationMa
             }
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let detailedCell = segue.destination as? DetailedTableViewCell {
+        if let detailedCell = segue.destination as? DetailViewController {
             detailedCell.weatherInCell = detailTableWeather
             DispatchQueue.main.async {
                 detailedCell.updateData()

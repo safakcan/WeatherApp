@@ -10,13 +10,10 @@ import UIKit
 
 class WeatherTableViewCell: UITableViewCell {
 
- 
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var weatherName: UILabel!
     @IBOutlet weak var weatherDegree: UILabel!
-    
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,7 +24,4 @@ class WeatherTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    //TODO: setcell
-
 }

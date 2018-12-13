@@ -17,6 +17,9 @@ class MapViewController: UIViewController{
     var latitude = 0.0
     var longitude = 0.0
     
+    @IBAction func closeAction(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
+    }
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +36,7 @@ class MapViewController: UIViewController{
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        
     }
-    
 }
 
 extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
@@ -90,13 +91,4 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         alert.addAction(noButton)
         present(alert,animated: true, completion: nil)
     }
-    func wrapLocation() {
-        
-        //        let location = Location(context: PersistanceService.context)
-        //        location.latitude = latitude
-        //        location.longitude = longitude
-        //        PersistanceService.saveContext()
-        //        ViewController.tableCells.append(location)
-    }
-    
 }

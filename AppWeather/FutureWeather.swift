@@ -9,7 +9,6 @@
 import Foundation
 
 class FutureWeather {
-    
     var date: String?
     var image: Data?
     var temp: Double?

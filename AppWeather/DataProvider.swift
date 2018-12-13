@@ -23,7 +23,6 @@ class DataProvider {
         }
     }
     
-    
     func getForecastData(lat: Double, long: Double, apiCallType: ApiCallType , callback: @escaping (([FutureWeather])->Void)){
         apiHandler.fetchForecastData(lat: lat, long: long, apiCallType: apiCallType) { (forecastedWeather) in
             callback(forecastedWeather)

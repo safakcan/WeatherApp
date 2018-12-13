@@ -8,19 +8,15 @@
 
 import UIKit
 
-class DetailedTableViewCell: UIViewController {
+class DetailViewController: UIViewController {
     
-    @IBOutlet var tableViewDetail: UITableView!
+    @IBOutlet var detailTableView: UITableView!
     @IBOutlet var detailedCellImage: UIImageView!
     @IBOutlet var detailedCellDegree: UILabel!
     @IBOutlet var detailedCellName: UILabel!
     @IBOutlet var humidity: UILabel!
     @IBOutlet var rain: UILabel!
     @IBOutlet var wind: UILabel!
-    
-    
-    
-    
     
     var weatherInCell = Weather(latitude: 0.0, longitude: 0.0)
     var tableArray: [FutureWeather]?
@@ -31,19 +27,20 @@ class DetailedTableViewCell: UIViewController {
         
         dataProvider.getForecastData(lat: weatherInCell.latitude, long: weatherInCell.longitude, apiCallType: ApiCallType.forecastWithCelcius) { (futureWeathers) in
             DispatchQueue.main.async {
-                
                 self.tableArray = futureWeathers
-                self.tableViewDetail.reloadData()
+                self.detailTableView.reloadData()
                 self.updateData()
             }
         }
-        tableViewDetail.delegate = self
-        tableViewDetail.dataSource = self
+        
+        detailTableView.delegate = self
+        detailTableView.dataSource = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    @IBAction func closeTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
+    
     
     func updateData() {
         detailedCellName.text = weatherInCell.name
@@ -69,16 +66,14 @@ class DetailedTableViewCell: UIViewController {
     }
 }
 
-extension DetailedTableViewCell: UITableViewDelegate,UITableViewDataSource  {
+extension DetailViewController: UITableViewDelegate,UITableViewDataSource  {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastTableViewCell", for: indexPath) as? ForecastTableViewCell
         
         if let cellDate  = tableArray?[indexPath.row].date {
@@ -93,8 +88,4 @@ extension DetailedTableViewCell: UITableViewDelegate,UITableViewDataSource  {
         
         return cell!
     }
-    
-    
-    
-    
 }
