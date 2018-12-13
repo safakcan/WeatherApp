@@ -160,8 +160,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U06-If-dgr">
-                                <rect key="frame" x="228" y="60" width="137" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U06-If-dgr">
+                                <rect key="frame" x="212" y="60" width="153" height="29"/>
                                 <segments>
                                     <segment title="celcius"/>
                                     <segment title="fahrenheit"/>
@@ -195,6 +195,13 @@
                                     <segue destination="J5h-Xn-Vs7" kind="show" id="fSy-bc-2NH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9t-Xd-Me4">
+                                <rect key="frame" x="319" y="241" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="onG-uW-pV5" kind="show" id="wUG-rU-QQo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -202,8 +209,10 @@
                             <constraint firstItem="fXo-is-QFo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="6fB-b7-Aya"/>
                             <constraint firstItem="Ghj-In-mJb" firstAttribute="top" secondItem="FUp-Ml-J6T" secondAttribute="bottom" constant="8" id="9x4-42-gwg"/>
                             <constraint firstItem="ctS-oK-zSy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="199" id="DLU-tr-5Qv"/>
+                            <constraint firstItem="o9t-Xd-Me4" firstAttribute="top" secondItem="U06-If-dgr" secondAttribute="bottom" constant="153" id="Elr-ua-bcq"/>
                             <constraint firstItem="U4v-jb-itA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="175" id="FcY-0b-0wD"/>
                             <constraint firstItem="ctS-oK-zSy" firstAttribute="leading" secondItem="zmm-42-akH" secondAttribute="trailing" constant="50" id="PAb-vq-Xe8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o9t-Xd-Me4" secondAttribute="trailing" constant="10" id="RoL-fW-UCc"/>
                             <constraint firstItem="zmm-42-akH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="206" id="cDv-zZ-V2y"/>
                             <constraint firstItem="U06-If-dgr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="e8R-WT-9dr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FUp-Ml-J6T" secondAttribute="trailing" constant="16" id="g4c-oM-vd9"/>
@@ -291,36 +300,36 @@
         <scene sceneID="Z0m-Hg-rZW">
             <objects>
                 <viewController id="qVV-As-mXk" customClass="PopupViewController" customModule="AppWeather" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ph6-vd-i6s">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="ph6-vd-i6s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFK-HX-9lh">
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PFK-HX-9lh">
                                 <rect key="frame" x="51" y="213" width="273" height="241"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap a star to rate it on the App Store" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0i-hH-MMY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tap a star to rate it on the App Store" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0i-hH-MMY">
                                         <rect key="frame" x="25" y="73" width="234.5" height="16.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGL-u6-xUI">
-                                        <rect key="frame" x="96" y="191" width="81" height="32"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGL-u6-xUI">
+                                        <rect key="frame" x="90" y="191" width="81" height="32"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <state key="normal" title="NOT NOW"/>
                                         <connections>
                                             <action selector="exitTapped:" destination="qVV-As-mXk" eventType="touchUpInside" id="sNk-P2-i7g"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="48T-Mo-lqH" customClass="RatingControl" customModule="AppWeather" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="97.5" width="225" height="45"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="48T-Mo-lqH" customClass="RatingControl" customModule="AppWeather" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="97.5" width="213" height="45"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="starCount">
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enjoying AppWeather?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHE-X9-fui">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Enjoying AppWeather?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHE-X9-fui">
                                         <rect key="frame" x="0.0" y="44" width="273" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="tr3-UT-2yC"/>
@@ -572,6 +581,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KX1-ZF-z5i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-14" y="1087"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="Z9j-Oj-2Ox">
+            <objects>
+                <viewController id="onG-uW-pV5" customClass="SettingsViewController" customModule="AppWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DIk-Q9-ftf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q8q-6I-3Ob">
+                                <rect key="frame" x="272" y="87" width="51" height="31"/>
+                                <connections>
+                                    <action selector="tempSwitch:" destination="onG-uW-pV5" eventType="valueChanged" id="kd7-X9-Oye"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switch to Fahrenheit " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RE8-9t-qUm">
+                                <rect key="frame" x="40" y="92" width="161" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gP-Lp-zjo">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <color key="backgroundColor" red="0.99557429549999998" green="0.0" blue="0.13250654940000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="5eL-iN-LmN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="33"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeAction:" destination="Q0m-rT-ZTN" eventType="touchUpInside" id="Bbo-sT-Nlh"/>
+                                    <action selector="closeButton:" destination="onG-uW-pV5" eventType="touchUpInside" id="MPQ-Hy-e3T"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="W09-1b-fDn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RE8-9t-qUm" firstAttribute="top" secondItem="2Yp-wk-Vbh" secondAttribute="top" constant="72" id="4Nn-rh-qjg"/>
+                            <constraint firstItem="Q8q-6I-3Ob" firstAttribute="leading" secondItem="RE8-9t-qUm" secondAttribute="trailing" constant="71" id="GPa-wh-Yfh"/>
+                            <constraint firstItem="RE8-9t-qUm" firstAttribute="leading" secondItem="2Yp-wk-Vbh" secondAttribute="leading" constant="40" id="IIP-xH-9yq"/>
+                            <constraint firstItem="Q8q-6I-3Ob" firstAttribute="top" secondItem="2Yp-wk-Vbh" secondAttribute="top" constant="67" id="IR3-bS-f11"/>
+                            <constraint firstItem="2Yp-wk-Vbh" firstAttribute="trailing" secondItem="Q8q-6I-3Ob" secondAttribute="trailing" constant="54" id="UoL-cG-7UB"/>
+                            <constraint firstItem="7gP-Lp-zjo" firstAttribute="leading" secondItem="2Yp-wk-Vbh" secondAttribute="leading" id="YPJ-zv-6WR"/>
+                            <constraint firstItem="7gP-Lp-zjo" firstAttribute="trailing" secondItem="2Yp-wk-Vbh" secondAttribute="trailing" id="miP-Ri-18B"/>
+                            <constraint firstItem="7gP-Lp-zjo" firstAttribute="bottom" secondItem="2Yp-wk-Vbh" secondAttribute="bottom" id="vqZ-Fj-PkC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2Yp-wk-Vbh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GCP-Ec-hBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985" y="884"/>
         </scene>
     </scenes>
     <resources>

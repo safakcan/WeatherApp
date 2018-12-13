@@ -31,7 +31,8 @@ class PopupViewController: UIViewController {
     
     
     override func viewDidLoad() {
-           SKStoreReviewController.requestReview()
+        super.viewDidLoad()
+          // SKStoreReviewController.requestReview()
         self.view.layer.cornerRadius = 10
     }
     
