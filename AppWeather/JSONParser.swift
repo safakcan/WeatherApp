@@ -30,15 +30,11 @@ class JSONParser {
             localCondition = currentConditions["temp"] as! Double
             lat = coord["lat"] as! Double
             lon = coord["lon"] as! Double
-            
-           
-            
+        
             let imageBaseURL = "http://openweathermap.org/img/w/"
             let imageURL = URL(string: imageBaseURL + weatherIcon + ".png")
             image = try? Data(contentsOf: imageURL!)
-            
-            
-        }catch let error as NSError {
+            }catch let error as NSError {
             print(error)
         }
         

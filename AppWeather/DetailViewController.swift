@@ -37,6 +37,11 @@ class DetailViewController: UIViewController {
         detailTableView.dataSource = self
     }
     
+    @IBAction func closeTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     func updateData() {
         detailedCellName.text = weatherInCell.name
         detailedCellName.sizeToFit()

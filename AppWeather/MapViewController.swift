@@ -17,6 +17,9 @@ class MapViewController: UIViewController{
     var latitude = 0.0
     var longitude = 0.0
     
+    @IBAction func closeAction(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
+    }
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
