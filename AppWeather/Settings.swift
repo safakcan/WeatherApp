@@ -9,6 +9,6 @@
 import Foundation
 
 class Settings {
-    static var callTypeWeather = ApiCallType.weatherWithCelcius
-    static var callTypeForecast = ApiCallType.forecastWithCelcius
+    static var callTypeWeather = ApiCallType.weather
+    static var callTypeForecast = ApiCallType.forecast
 }

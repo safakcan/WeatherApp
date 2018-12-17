@@ -79,12 +79,12 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     func annotationAlert(){
-        let alert = UIAlertController(title: "Are you sure to add this location to your bookmark", message: nil, preferredStyle: .alert)
-        let yesButton = UIAlertAction(title: "YES", style: .default) { (_) in
+        let alert = UIAlertController(title: NSLocalizedString( "hello", comment: ""), message: nil, preferredStyle: .alert)
+        let yesButton = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default) { (_) in
             
             CoreDataBase.createData(latitude: self.latitude, longitude: self.longitude)
         }
-        let noButton = UIAlertAction(title: "NO", style: .destructive) { (_) in
+        let noButton = UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .destructive) { (_) in
            // CoreDataBase.deleteData()
         }
         alert.addAction(yesButton)

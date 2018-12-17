@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  AppWeather
+
+  Created by Can Bas on 12/17/18.
+  Copyright © 2018 Can Bas. All rights reserved.
+*/
+
+"hello" = "Are you sure to add this location to your bookmarks ?";
+
+"Yes" = "Yes";
+
+"No" = "No";

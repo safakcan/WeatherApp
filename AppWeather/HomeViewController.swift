@@ -72,6 +72,12 @@ class HomeViewController: UIViewController {
         // TODO: database'ten kordinatları weathers a çek
         addAllData()
         getAllData()
+        locationManager.startUpdatingLocation()
+        updateCurrentWeather()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
     }
     
     func updateCurrentWeather() {
@@ -147,14 +153,14 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate,CLLocati
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         currentWeather = Weather(latitude: locValue.latitude, longitude: locValue.longitude)
-        dataProvider.getWeatherData(lat: (currentWeather?.latitude)!, lon: (currentWeather?.longitude)!, apiCallType: Settings.callTypeWeather ) { (callbackWeather) in
+        dataProvider.getWeatherData(lat: (currentWeather?.latitude)!, lon: (currentWeather?.longitude)!, apiCallType: ApiCallType.weather ) { (callbackWeather) in
             self.currentWeather = callbackWeather
             DispatchQueue.main.async {
                 self.updateCurrentWeather()
             }
         }
     }
-    
+
     func addAllData () {
         initialWeathers.removeAll()
         
@@ -169,7 +175,7 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate,CLLocati
         if initialWeathers.count == 0 {
             return
         }
-        dataProvider.getWeatherData(lat: initialWeathers[counter].latitude, lon: initialWeathers[counter].longitude, apiCallType: Settings.callTypeWeather) { (myWeather) in
+        dataProvider.getWeatherData(lat: initialWeathers[counter].latitude, lon: initialWeathers[counter].longitude, apiCallType: ApiCallType.weather) { (myWeather) in
             self.initialWeathers[self.counter] = myWeather
             if(self.counter + 1 < self.initialWeathers.count) {
                 self.counter += 1
@@ -178,6 +184,7 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate,CLLocati
                 self.counter = 0;
                 DispatchQueue.main.async {
                     self.weathers = self.initialWeathers
+                    print(self.initialWeathers[6].latitude, self.initialWeathers[6].longitude )
                     self.tabelView.reloadData()
                 }
             }
