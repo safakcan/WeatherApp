@@ -17,8 +17,8 @@ class CreditViewController: UIViewController  {
     }
     
     override func viewDidLoad() {
-        presentWebView()
-        htmlWebView()
+      
+        checkDeviceLanguageThenLoad()
     }
     
     func presentWebView() {
@@ -26,10 +26,26 @@ class CreditViewController: UIViewController  {
         webView.loadRequest(URLRequest(url: url!))
     }
     
-    func htmlWebView() {
+    func htmlWebViewEnglish() {
         
         if let path = Bundle.main.path(forResource: "htmlStatic", ofType: "html") {
             htmlView.loadRequest(URLRequest(url: URL(fileURLWithPath: path)) )
         }
+    }
+    
+    func htmlWebViewTurkish() {
+        
+        if let path = Bundle.main.path(forResource: "htmlStaticTR", ofType: "html") {
+            htmlView.loadRequest(URLRequest(url: URL(fileURLWithPath: path)) )
+        }
+    }
+    
+    func checkDeviceLanguageThenLoad () {
+        if Bundle.main.preferredLocalizations.first == "en" {
+            htmlWebViewEnglish()
+        }else{
+            htmlWebViewTurkish()
+        }
+        presentWebView()
     }
 }
