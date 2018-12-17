@@ -11,7 +11,6 @@ import Foundation
 enum ApiCallType: String {
     case forecast
     case weather
-  
 }
 
 class AppWeatherUtils {
@@ -34,10 +33,11 @@ class AppWeatherUtils {
         switch apiCallType {
         case .forecast:
             concatinate = baseURL + "forecast?" + "units=" + unit + "&lat=" + String(weather.latitude) + "&" + "lon=" + String(weather.longitude) + lang + "&appid="
- 
+            
         case .weather:
             concatinate = baseURL + "weather?" + "units=" + unit + "&lat=" + String(weather.latitude) + "&" + "lon=" + String(weather.longitude) + lang + "&appid="
         }
         return concatinate + apiKey
     }
+    
 }
