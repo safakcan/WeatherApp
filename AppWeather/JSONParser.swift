@@ -58,14 +58,14 @@ class JSONParser {
                 
                 var mainDetail = forecastList[index]["main"] as! [String:Any]
                 var weatherDetail = forecastList[index]["weather"] as![[String:Any]]
+                currentConditions = forecastList[0]["main"] as! [String:Any]
+
                 let date = forecastList[index]["dt_txt"] as! String
                 let iconDetail = weatherDetail[0]["icon"] as! String
                 let degreeDetail = mainDetail["temp"] as! Double
                 var windConditions = forecastList[0]["wind"] as! [String:Any]
                 let humidity = currentConditions["humidity"] as! Int
                 let windSpeed = windConditions["speed"] as! Double
-                
-                currentConditions = forecastList[0]["main"] as! [String:Any]
                 
                 if let rainConditions = forecastList[0]["rain"] as? [String:Any] {
                     if checkIfNil(condition: rainConditions) == true {

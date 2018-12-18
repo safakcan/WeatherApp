@@ -72,19 +72,16 @@ class HomeViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func showTempType(_ sender: Any) {
-        //isCelcius = !isCelcius
         self.performSegue(withIdentifier: "mySegue", sender: nil)
     }
     
     // MARK: - Configure
     
     func updateCurrentWeather() {
-        //TODO: set weather
         if let temp = currentWeather?.temp {
             showDegree.text =  String(format: "%.f",temp) + "\u{00B0}"
             showDegree.sizeToFit()
         }
-        
         showCityName.text = currentWeather?.name
         showCityName.sizeToFit()
         
@@ -94,12 +91,48 @@ class HomeViewController: UIViewController {
         }
     }
     
-    // MARK: - Business Logic
+    func addAllData () {
+        initialWeathers.removeAll()
+        
+        CoreDataBase.retrieveData { (array) in
+            initialWeathers.append(contentsOf: array)
+        }
+    }
+    
+    func getAllData() {
+        if initialWeathers.count == 0 {
+            return
+        }
+        
+        dataProvider.getWeatherData(lat: initialWeathers[counter].latitude, lon: initialWeathers[counter].longitude, apiCallType: ApiCallType.weather) { (myWeather) in
+            self.initialWeathers[self.counter] = myWeather
+            
+            if(self.counter + 1 < self.initialWeathers.count) {
+                self.counter += 1
+                self.getAllData()
+            } else {
+                self.counter = 0;
+                DispatchQueue.main.async {
+                    self.weathers = self.initialWeathers
+                    self.tabelView.reloadData()
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailedCell = segue.destination as? DetailViewController {
+            detailedCell.weatherInCell = detailTableWeather
+            DispatchQueue.main.async {
+                detailedCell.updateData()
+            }
+        }
+    }
 }
 
 // MARK: - Extensions
 
-extension HomeViewController: UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,UISearchBarDelegate {
+extension HomeViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weathers.count//weathers.count //TODO: Weathers count
@@ -139,11 +172,15 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate,CLLocati
             tableView.reloadData()
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         detailTableWeather = weathers[indexPath.row]
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
+    
+}
+
+extension HomeViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
@@ -155,45 +192,10 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate,CLLocati
             }
         }
     }
+    
+}
 
-    func addAllData () {
-        initialWeathers.removeAll()
-        
-        CoreDataBase.retrieveData { (array) in
-            initialWeathers.append(contentsOf: array)
-            print(array)
-        }
-    }
-    
-    func getAllData() {
-        if initialWeathers.count == 0 {
-            return
-        }
-        
-        dataProvider.getWeatherData(lat: initialWeathers[counter].latitude, lon: initialWeathers[counter].longitude, apiCallType: ApiCallType.weather) { (myWeather) in
-            self.initialWeathers[self.counter] = myWeather
-            
-            if(self.counter + 1 < self.initialWeathers.count) {
-                self.counter += 1
-                self.getAllData()
-            } else {
-                self.counter = 0;
-                DispatchQueue.main.async {
-                    self.weathers = self.initialWeathers
-                    self.tabelView.reloadData()
-                }
-            }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailedCell = segue.destination as? DetailViewController {
-            detailedCell.weatherInCell = detailTableWeather
-            DispatchQueue.main.async {
-                detailedCell.updateData()
-            }
-        }
-    }
+extension HomeViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let keyWords = searchBar.text

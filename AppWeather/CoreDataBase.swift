@@ -30,12 +30,12 @@ class CoreDataBase{
     }
     
     static func retrieveData(callback: (([Weather])-> Void)) {
-
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
-    
+        
         do {
             let result = try managedContext.fetch(fetchRequest)
             var weatherArray = [Weather]()
@@ -58,7 +58,7 @@ class CoreDataBase{
         
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
-
+        
         do {
             let test = try managedContext.fetch(fetchRequest)
             let objectToDelete = test[index] as! NSManagedObject
@@ -72,6 +72,7 @@ class CoreDataBase{
         } catch {
             print(error)
         }
+        
     }
     
 }

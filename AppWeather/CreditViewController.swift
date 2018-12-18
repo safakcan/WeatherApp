@@ -9,16 +9,17 @@
 import UIKit
 
 class CreditViewController: UIViewController  {
+    
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var htmlView: UIWebView!
     
-    @IBAction func closeAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+    // MARK: LifeCycle
     
     override func viewDidLoad() {
         checkDeviceLanguageThenLoad()
     }
+    
+    // MARK: Configure
     
     func presentWebView() {
         let url = URL(string: "https://www.adesso.com.tr")
@@ -45,4 +46,11 @@ class CreditViewController: UIViewController  {
         }
         presentWebView()
     }
+    
+    //: MARK: Actions
+    
+    @IBAction func closeAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

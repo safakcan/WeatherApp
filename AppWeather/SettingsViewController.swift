@@ -18,16 +18,7 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var unitSwitch: UISwitch!
     
-    @IBAction func tempSwitch(_ sender: UISwitch) {
-
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(sender.isOn ? TemperatureUnit.fahrenheit.rawValue:
-        TemperatureUnit.celcius.rawValue, forKey: "unit")
-    }
-    
-    @IBAction func closeButton(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
+    // MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +26,18 @@ class SettingsViewController: UIViewController {
         let userDefaults = UserDefaults.standard
         let unit = userDefaults.string(forKey: "unit") ?? TemperatureUnit.celcius.rawValue
         unitSwitch.isOn = unit != TemperatureUnit.celcius.rawValue
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func tempSwitch(_ sender: UISwitch) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(sender.isOn ? TemperatureUnit.fahrenheit.rawValue:
+            TemperatureUnit.celcius.rawValue, forKey: "unit")
+    }
+    
+    @IBAction func closeButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
 }

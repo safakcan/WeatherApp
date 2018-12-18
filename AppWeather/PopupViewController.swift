@@ -14,11 +14,15 @@ class PopupViewController: UIViewController {
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet var starButtons: [UIButton]!
     
+    // MARK: LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
           // SKStoreReviewController.requestReview()
         self.view.layer.cornerRadius = 10
     }
+    
+    // MARK: Actions
     
     @IBAction func exitTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

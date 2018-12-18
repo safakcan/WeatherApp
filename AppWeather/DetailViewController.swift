@@ -10,6 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    // MARK: Outlets
+    
     @IBOutlet var detailTableView: UITableView!
     @IBOutlet var detailedCellImage: UIImageView!
     @IBOutlet var detailedCellDegree: UILabel!
@@ -22,6 +24,9 @@ class DetailViewController: UIViewController {
     var tableArray: [FutureWeather]?
     var apiHelper = ApiHelper()
     var dataProvider = DataProvider(apiHandler: ApiHelperWithFramework())
+   
+    // MARK: LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,15 +37,11 @@ class DetailViewController: UIViewController {
                 self.updateData()
             }
         }
-        
         detailTableView.delegate = self
         detailTableView.dataSource = self
     }
     
-    @IBAction func closeTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+    // MARK: Configure
     
     func updateData() {
         detailedCellName.text = weatherInCell.name
@@ -48,22 +49,31 @@ class DetailViewController: UIViewController {
         
         if let hum = tableArray?.first?.humidity {
             humidity.text = String(hum)
-            print(hum)
         }
         
         if let image = weatherInCell.image {
             detailedCellImage.image = UIImage(data: image)
         }
+        
         if let temp = weatherInCell.temp {
             detailedCellDegree.text = String(format: "%.f",temp) + "\u{00B0}"
         }
+        
         if let rainText = tableArray?.first?.rain {
             rain.text = "%" + String(format: "%.2f",rainText)
         }
+        
         if let windText = tableArray?.first?.wind {
             wind.text = String(format: "%..f",windText) + "m/s"
         }
     }
+    
+    //MARK: Actions
+    
+    @IBAction func closeTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension DetailViewController: UITableViewDelegate,UITableViewDataSource  {

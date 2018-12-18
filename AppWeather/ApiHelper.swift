@@ -39,7 +39,7 @@ class ApiHelper: ApiHandler {
                 let forecastArray: [FutureWeather] = JSONParser.parseForecast(data: data!)
                 callback(forecastArray)
                 
-            }
+                }
             }.resume()
     }
     
