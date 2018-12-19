@@ -10,17 +10,22 @@ import Foundation
 import MapKit
 import UIKit
 
+private enum Constants {
+    
+}
+
 class MapViewController: UIViewController{
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
     let locationManager = CLLocationManager()
     let annotation = MKPointAnnotation()
     
     var latitude = 0.0
     var longitude = 0.0
     
-    @IBAction func closeAction(_ sender: Any) {
-    dismiss(animated: true, completion: nil)
-    }
-    @IBOutlet weak var mapView: MKMapView!
+    // MARK: LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -32,24 +37,37 @@ class MapViewController: UIViewController{
         mapView.addGestureRecognizer(longPressRecognizer)
         
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self as? CLLocationManagerDelegate
+            locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
     }
-}
-
-extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        let coordinate = CLLocationCoordinate2D(latitude: locValue.latitude, longitude: locValue.longitude)
-        mapView.setCenter(coordinate, animated: true)
-        mapView.showsUserLocation = true
+    // MARK: Actions:
+    
+    @IBAction func closeAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func closeTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: Configure
+    
+    func annotationAlert(){
+        let alert = UIAlertController(title: NSLocalizedString( "hello", comment: ""), message: nil, preferredStyle: .alert)
+        let yesButton = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default) { (_) in
+            CoreDataBase.createData(latitude: self.latitude, longitude: self.longitude)
+        }
+        let noButton = UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .destructive) { (_) in
+        }
+        alert.addAction(yesButton)
+        alert.addAction(noButton)
+        present(alert,animated: true, completion: nil)
     }
     
     @objc func gestureRecognizer(press: UIGestureRecognizer){
-        
         if press.state == .began {
             let position = press.location(in: mapView)
             let locationCoordinate = mapView.convert(position, toCoordinateFrom: mapView)
@@ -61,6 +79,11 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
             annotationAlert()
         }
     }
+}
+
+    // MARK: Extensions
+
+extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else { return nil }
@@ -77,18 +100,14 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         
         return annotationView
     }
+}
+
+extension MapViewController: CLLocationManagerDelegate {
     
-    func annotationAlert(){
-        let alert = UIAlertController(title: NSLocalizedString( "hello", comment: ""), message: nil, preferredStyle: .alert)
-        let yesButton = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default) { (_) in
-            
-            CoreDataBase.createData(latitude: self.latitude, longitude: self.longitude)
-        }
-        let noButton = UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .destructive) { (_) in
-           // CoreDataBase.deleteData()
-        }
-        alert.addAction(yesButton)
-        alert.addAction(noButton)
-        present(alert,animated: true, completion: nil)
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        let coordinate = CLLocationCoordinate2D(latitude: locValue.latitude, longitude: locValue.longitude)
+        mapView.setCenter(coordinate, animated: true)
+        mapView.showsUserLocation = true
     }
 }

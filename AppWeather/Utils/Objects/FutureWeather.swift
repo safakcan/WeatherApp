@@ -24,4 +24,5 @@ class FutureWeather {
         self.wind = wind
         self.rain = rain
     }
+    
 }

@@ -10,18 +10,10 @@ import UIKit
 
 class WeatherTableViewCell: UITableViewCell {
 
+    //MARK: Outlets
+    
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var weatherName: UILabel!
     @IBOutlet weak var weatherDegree: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
 }

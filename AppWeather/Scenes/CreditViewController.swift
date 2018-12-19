@@ -9,17 +9,17 @@
 import UIKit
 
 class CreditViewController: UIViewController  {
+    
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var htmlView: UIWebView!
     
-    @IBAction func closeAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+    // MARK: LifeCycle
     
     override func viewDidLoad() {
-      
         checkDeviceLanguageThenLoad()
     }
+    
+    // MARK: Configure
     
     func presentWebView() {
         let url = URL(string: "https://www.adesso.com.tr")
@@ -27,14 +27,12 @@ class CreditViewController: UIViewController  {
     }
     
     func htmlWebViewEnglish() {
-        
         if let path = Bundle.main.path(forResource: "htmlStatic", ofType: "html") {
             htmlView.loadRequest(URLRequest(url: URL(fileURLWithPath: path)) )
         }
     }
     
     func htmlWebViewTurkish() {
-        
         if let path = Bundle.main.path(forResource: "htmlStaticTR", ofType: "html") {
             htmlView.loadRequest(URLRequest(url: URL(fileURLWithPath: path)) )
         }
@@ -48,4 +46,11 @@ class CreditViewController: UIViewController  {
         }
         presentWebView()
     }
+    
+    //: MARK: Actions
+    
+    @IBAction func closeAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
