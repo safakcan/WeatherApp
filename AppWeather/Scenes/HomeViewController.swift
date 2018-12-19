@@ -11,6 +11,8 @@ import MapKit
 
 class HomeViewController: UIViewController {
 
+    //MARK: Outlets
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tabelView: UITableView!
     @IBOutlet weak var showDegree: UILabel!
@@ -38,11 +40,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tempImageView = UIImageView(image: UIImage(named: "homeTableviewBackground"))
-        tempImageView.frame = tabelView.frame
-        tabelView.backgroundView = tempImageView;
         tabelView.separatorStyle = .none
-        
         tabelView.dataSource = self
         tabelView.delegate = self
         searchBar.delegate = self
@@ -65,25 +63,33 @@ class HomeViewController: UIViewController {
         updateCurrentWeather()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.performSegue(withIdentifier: "mySegue", sender: nil)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         locationManager.stopUpdatingLocation()
     }
     
     // MARK: - Actions
-    
-    @IBAction func showTempType(_ sender: Any) {
-        self.performSegue(withIdentifier: "mySegue", sender: nil)
+
+    @IBAction func showSettings(_ sender: UIButton) {
+        if let settingsViewController = self.storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController {
+            
+            self.navigationController?.pushViewController(settingsViewController, animated: true)
+        }
     }
-    
+ 
+        
     // MARK: - Configure
     
     func updateCurrentWeather() {
         if let temp = currentWeather?.temp {
-            showDegree.text =  String(format: "%.f",temp) + "\u{00B0}"
-            showDegree.sizeToFit()
+            showDegree.text =  String(format: "%.f",temp) + SpecialCharacters.temprature.rawValue
         }
         showCityName.text = currentWeather?.name
-        showCityName.sizeToFit()
         
         if let img = currentWeather?.image {
             let image = UIImage(data: img)
@@ -119,81 +125,9 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailedCell = segue.destination as? DetailViewController {
-            detailedCell.weatherInCell = detailTableWeather
-            DispatchQueue.main.async {
-                detailedCell.updateData()
-            }
-        }
-    }
 }
 
 // MARK: - Extensions
-
-extension HomeViewController: UITableViewDataSource,UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weathers.count//weathers.count //TODO: Weathers count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as? WeatherTableViewCell
-        
-        if let temp = weathers[indexPath.row].temp{
-            cell?.weatherDegree.text = String(format: "%.f",temp) + "\u{00B0}"
-        }
-        if let image = weathers[indexPath.row].image {
-            cell?.weatherIcon.image = UIImage(data: image)
-        }
-        cell?.weatherName.text = weathers[indexPath.row].name
-        cell?.weatherName.sizeToFit()
-        
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
-            if isSearching == false {
-                weathers.remove(at: indexPath.row)
-                initialWeathers.remove(at: indexPath.row)
-                CoreDataBase.deleteData(at: indexPath.row)
-            } else {
-                for index in 0...initialWeathers.count-1 {
-                    if weathers[indexPath.row].name == initialWeathers[index].name{
-                        CoreDataBase.deleteData(at: index)
-                        initialWeathers.remove(at: index)
-                        weathers.remove(at: indexPath.row)
-                    }
-                }
-            }
-            
-            tableView.reloadData()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        detailTableWeather = weathers[indexPath.row]
-        performSegue(withIdentifier: "showDetail", sender: nil)
-    }
-    
-}
-
-extension HomeViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        currentWeather = Weather(latitude: locValue.latitude, longitude: locValue.longitude)
-        dataProvider.getWeatherData(lat: (currentWeather?.latitude)!, lon: (currentWeather?.longitude)!, apiCallType: ApiCallType.weather ) { (callbackWeather) in
-            self.currentWeather = callbackWeather
-            DispatchQueue.main.async {
-                self.updateCurrentWeather()
-            }
-        }
-    }
-    
-}
 
 extension HomeViewController: UISearchBarDelegate {
     
@@ -215,6 +149,75 @@ extension HomeViewController: UISearchBarDelegate {
         }
         
         tabelView.reloadData()
+    }
+}
+
+extension HomeViewController: UITableViewDataSource,UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return weathers.count//weathers.count //TODO: Weathers count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as? WeatherTableViewCell
+        
+        if let temp = weathers[indexPath.row].temp{
+            cell?.weatherDegree.text = String(format: "%.f",temp) + SpecialCharacters.temprature.rawValue
+        }
+        if let image = weathers[indexPath.row].image {
+            cell?.weatherIcon.image = UIImage(data: image)
+        }
+        cell?.weatherName.text = weathers[indexPath.row].name
+        cell?.weatherName.sizeToFit()
+        
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            if !isSearching {
+                weathers.remove(at: indexPath.row)
+                initialWeathers.remove(at: indexPath.row)
+                CoreDataBase.deleteData(at: indexPath.row)
+            } else {
+                for index in 0...initialWeathers.count-1 {
+                    if weathers[indexPath.row].name == initialWeathers[index].name{
+                        CoreDataBase.deleteData(at: index)
+                        initialWeathers.remove(at: index)
+                        weathers.remove(at: indexPath.row)
+                        break
+                    }
+                }
+            }
+            
+            tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        detailTableWeather = weathers[indexPath.row]
+//        performSegue(withIdentifier: "showDetail", sender: nil)
+        
+        if let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            detailViewController.weatherInCell = detailTableWeather
+            
+            self.navigationController?.pushViewController(detailViewController, animated: true)
+        }
+    }
+    
+}
+
+extension HomeViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        currentWeather = Weather(latitude: locValue.latitude, longitude: locValue.longitude)
+        dataProvider.getWeatherData(lat: (currentWeather?.latitude)!, lon: (currentWeather?.longitude)!, apiCallType: ApiCallType.weather ) { (callbackWeather) in
+            self.currentWeather = callbackWeather
+            DispatchQueue.main.async {
+                self.updateCurrentWeather()
+            }
+        }
     }
     
 }

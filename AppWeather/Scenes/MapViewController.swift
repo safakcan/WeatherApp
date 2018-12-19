@@ -10,14 +10,19 @@ import Foundation
 import MapKit
 import UIKit
 
+private enum Constants {
+    
+}
+
 class MapViewController: UIViewController{
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
     let locationManager = CLLocationManager()
     let annotation = MKPointAnnotation()
     
     var latitude = 0.0
     var longitude = 0.0
-    
-    @IBOutlet weak var mapView: MKMapView!
     
     // MARK: LifeCycle
     
@@ -43,13 +48,16 @@ class MapViewController: UIViewController{
     @IBAction func closeAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func closeTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
     // MARK: Configure
     
     func annotationAlert(){
         let alert = UIAlertController(title: NSLocalizedString( "hello", comment: ""), message: nil, preferredStyle: .alert)
         let yesButton = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default) { (_) in
-            
             CoreDataBase.createData(latitude: self.latitude, longitude: self.longitude)
         }
         let noButton = UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .destructive) { (_) in
@@ -60,7 +68,6 @@ class MapViewController: UIViewController{
     }
     
     @objc func gestureRecognizer(press: UIGestureRecognizer){
-        
         if press.state == .began {
             let position = press.location(in: mapView)
             let locationCoordinate = mapView.convert(position, toCoordinateFrom: mapView)

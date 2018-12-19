@@ -142,13 +142,13 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctS-oK-zSy">
-                                <rect key="frame" x="150" y="199" width="0.0" height="0.0"/>
+                                <rect key="frame" x="207.5" y="199" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="100"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zmm-42-akH">
-                                <rect key="frame" x="8" y="226" width="92" height="92"/>
+                                <rect key="frame" x="75.5" y="226" width="92" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="hRi-NC-QHG"/>
                                     <constraint firstAttribute="height" constant="92" id="pMP-9b-USU"/>
@@ -196,8 +196,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9t-Xd-Me4">
-                                <rect key="frame" x="308" y="241" width="57" height="30"/>
-                                <state key="normal" title="Settings"/>
+                                <rect key="frame" x="317" y="241" width="48" height="30"/>
+                                <state key="normal" title="Ayarlar"/>
                                 <connections>
                                     <segue destination="onG-uW-pV5" kind="show" id="wUG-rU-QQo"/>
                                 </connections>
@@ -211,7 +211,8 @@
                             <constraint firstItem="ctS-oK-zSy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="199" id="DLU-tr-5Qv"/>
                             <constraint firstItem="o9t-Xd-Me4" firstAttribute="top" secondItem="U06-If-dgr" secondAttribute="bottom" constant="153" id="Elr-ua-bcq"/>
                             <constraint firstItem="U4v-jb-itA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="175" id="FcY-0b-0wD"/>
-                            <constraint firstItem="ctS-oK-zSy" firstAttribute="leading" secondItem="zmm-42-akH" secondAttribute="trailing" constant="50" id="PAb-vq-Xe8"/>
+                            <constraint firstItem="ctS-oK-zSy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="20" id="HFh-oJ-fJe"/>
+                            <constraint firstItem="ctS-oK-zSy" firstAttribute="leading" secondItem="zmm-42-akH" secondAttribute="trailing" constant="40" id="PAb-vq-Xe8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o9t-Xd-Me4" secondAttribute="trailing" constant="10" id="RoL-fW-UCc"/>
                             <constraint firstItem="zmm-42-akH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="206" id="cDv-zZ-V2y"/>
                             <constraint firstItem="U06-If-dgr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="e8R-WT-9dr"/>
@@ -219,7 +220,6 @@
                             <constraint firstItem="Ghj-In-mJb" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="goa-1p-gJS"/>
                             <constraint firstItem="fXo-is-QFo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="k2U-0a-a1W"/>
                             <constraint firstItem="Ghj-In-mJb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="s3V-58-Yg9"/>
-                            <constraint firstItem="zmm-42-akH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="vkR-dF-1R0"/>
                             <constraint firstItem="U4v-jb-itA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="162" id="vmY-jd-AN4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U06-If-dgr" secondAttribute="trailing" constant="10" id="zv6-5j-Yxi"/>
                         </constraints>
@@ -265,7 +265,7 @@
                                     <action selector="closeAction:" destination="Q0m-rT-ZTN" eventType="touchUpInside" id="mlC-XX-kM1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep pressing for two seconds to add a place to your bookmarks." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcZ-u7-gwg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yerlerime eklemek için 2 saniye basılı tutun." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcZ-u7-gwg">
                                 <rect key="frame" x="0.0" y="20" width="375" height="59"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -307,16 +307,16 @@
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PFK-HX-9lh">
                                 <rect key="frame" x="51" y="213" width="273" height="241"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tap a star to rate it on the App Store" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0i-hH-MMY">
-                                        <rect key="frame" x="25" y="73" width="234.5" height="16.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="beğendiğiniz kadar yıldız verin !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0i-hH-MMY">
+                                        <rect key="frame" x="42" y="73" width="203" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGL-u6-xUI">
-                                        <rect key="frame" x="90" y="191" width="81" height="32"/>
+                                        <rect key="frame" x="86" y="191" width="90" height="32"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="NOT NOW"/>
+                                        <state key="normal" title="Daha Sonra"/>
                                         <connections>
                                             <action selector="exitTapped:" destination="qVV-As-mXk" eventType="touchUpInside" id="sNk-P2-i7g"/>
                                         </connections>
@@ -329,7 +329,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Enjoying AppWeather?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHE-X9-fui">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="AppWeather'ı beğendiniz mi ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHE-X9-fui">
                                         <rect key="frame" x="0.0" y="44" width="273" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="tr3-UT-2yC"/>
@@ -596,7 +596,7 @@
                                     <action selector="tempSwitch:" destination="onG-uW-pV5" eventType="valueChanged" id="kd7-X9-Oye"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switch to Fahrenheit " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RE8-9t-qUm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fahrenheit'e çevir " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RE8-9t-qUm">
                                 <rect key="frame" x="40" y="92" width="161" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>

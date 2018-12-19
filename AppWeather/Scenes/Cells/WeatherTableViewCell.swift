@@ -16,12 +16,4 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var weatherName: UILabel!
     @IBOutlet weak var weatherDegree: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
 }

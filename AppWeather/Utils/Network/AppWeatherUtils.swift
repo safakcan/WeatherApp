@@ -23,7 +23,7 @@ class AppWeatherUtils {
     
     static func buildURL(weather: Weather, apiCallType: ApiCallType ) -> String {
         let userDefaults = UserDefaults.standard
-        let unit = userDefaults.string(forKey: "unit") ?? TemperatureUnit.celcius.rawValue
+        let unit = userDefaults.string(forKey: UserdefaultStrings.unit.rawValue) ?? TemperatureUnit.celcius.rawValue
         if Bundle.main.preferredLocalizations.first == "en" {
             lang = "&lang=eng"
         } else {
@@ -33,10 +33,10 @@ class AppWeatherUtils {
         switch apiCallType {
         case .forecast:
             concatinate = baseURL + "forecast?" + "units=" + unit + "&lat=" + String(weather.latitude) + "&" + "lon=" + String(weather.longitude) + lang + "&appid="
-            
         case .weather:
             concatinate = baseURL + "weather?" + "units=" + unit + "&lat=" + String(weather.latitude) + "&" + "lon=" + String(weather.longitude) + lang + "&appid="
         }
+        
         return concatinate + apiKey
     }
     

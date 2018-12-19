@@ -82,7 +82,7 @@ class JSONParser {
                 futureWeather = FutureWeather(date: date, image: image, temp: degreeDetail,humidity: humidity, wind:windSpeed, rain: rain)
                 futureWeatherArray.append(futureWeather!)
                 
-                if index + 8 >= forecastList.count {
+                if index + 8 /*Constants.dayInterval*/ >= forecastList.count {
                     break
                 }
                 
@@ -98,7 +98,7 @@ class JSONParser {
     static func checkIfNil(condition: [String:Any]) -> Bool {
         if condition.count == 0 {
             return false
-        }else{
+        } else {
             return true
         }
     }

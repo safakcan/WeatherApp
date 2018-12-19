@@ -9,11 +9,6 @@
 import Foundation
 import UIKit
 
-enum TemperatureUnit: String {
-    case celcius = "metric"
-    case fahrenheit = "imperial"
-}
-
 class SettingsViewController: UIViewController {
     
     @IBOutlet weak var unitSwitch: UISwitch!
@@ -24,7 +19,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         let userDefaults = UserDefaults.standard
-        let unit = userDefaults.string(forKey: "unit") ?? TemperatureUnit.celcius.rawValue
+        let unit = userDefaults.string(forKey: UserdefaultStrings.unit.rawValue) ?? TemperatureUnit.celcius.rawValue
         unitSwitch.isOn = unit != TemperatureUnit.celcius.rawValue
     }
     
@@ -33,7 +28,7 @@ class SettingsViewController: UIViewController {
     @IBAction func tempSwitch(_ sender: UISwitch) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(sender.isOn ? TemperatureUnit.fahrenheit.rawValue:
-            TemperatureUnit.celcius.rawValue, forKey: "unit")
+            TemperatureUnit.celcius.rawValue, forKey: UserdefaultStrings.unit.rawValue)
     }
     
     @IBAction func closeButton(_ sender: UIButton) {

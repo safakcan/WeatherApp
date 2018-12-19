@@ -21,9 +21,9 @@ class DetailViewController: UIViewController {
     @IBOutlet var wind: UILabel!
     
     var weatherInCell = Weather(latitude: 0.0, longitude: 0.0)
-    var tableArray: [FutureWeather]?
-    var apiHelper = ApiHelper()
-    var dataProvider = DataProvider(apiHandler: ApiHelperWithFramework())
+    private var tableArray: [FutureWeather]?
+    private var apiHelper = ApiHelper()
+    private var dataProvider = DataProvider(apiHandler: ApiHelperWithFramework())
    
     // MARK: LifeCycle
     
@@ -37,13 +37,20 @@ class DetailViewController: UIViewController {
                 self.updateData()
             }
         }
+        
         detailTableView.delegate = self
         detailTableView.dataSource = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateData()
+    }
+    
     // MARK: Configure
     
-    func updateData() {
+    private func updateData() {
         detailedCellName.text = weatherInCell.name
         detailedCellName.sizeToFit()
         
@@ -56,7 +63,7 @@ class DetailViewController: UIViewController {
         }
         
         if let temp = weatherInCell.temp {
-            detailedCellDegree.text = String(format: "%.f",temp) + "\u{00B0}"
+            detailedCellDegree.text = String(format: "%.f",temp) + SpecialCharacters.temprature.rawValue
         }
         
         if let rainText = tableArray?.first?.rain {
@@ -78,7 +85,6 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: UITableViewDelegate,UITableViewDataSource  {
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
@@ -93,7 +99,7 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource  {
             cell?.futureImagaeCell.image = UIImage(data: cellImage)
         }
         if let cellDegree = tableArray?[indexPath.row].temp {
-            cell?.futureTempCell.text = String(format: "%.f", cellDegree) + "\u{00B0}"
+            cell?.futureTempCell.text = String(format: "%.f", cellDegree) + SpecialCharacters.temprature.rawValue
         }
         
         return cell!
