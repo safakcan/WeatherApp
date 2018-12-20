@@ -139,7 +139,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zmm-42-akH">
-                                <rect key="frame" x="75.5" y="270" width="92" height="92"/>
+                                <rect key="frame" x="75.5" y="224" width="92" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="92" id="hRi-NC-QHG"/>
                                     <constraint firstAttribute="height" constant="92" id="pMP-9b-USU"/>
@@ -193,7 +193,7 @@
                             <constraint firstItem="ctS-oK-zSy" firstAttribute="leading" secondItem="zmm-42-akH" secondAttribute="trailing" constant="40" id="PAb-vq-Xe8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o9t-Xd-Me4" secondAttribute="trailing" constant="16" id="Sdq-2f-FZh"/>
                             <constraint firstItem="FUp-Ml-J6T" firstAttribute="top" secondItem="o9t-Xd-Me4" secondAttribute="bottom" constant="73" id="Tf4-ue-x9j"/>
-                            <constraint firstItem="zmm-42-akH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="206" id="cDv-zZ-V2y"/>
+                            <constraint firstItem="zmm-42-akH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="160" id="cDv-zZ-V2y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FUp-Ml-J6T" secondAttribute="trailing" constant="16" id="g4c-oM-vd9"/>
                             <constraint firstItem="Ghj-In-mJb" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="goa-1p-gJS"/>
                             <constraint firstItem="fXo-is-QFo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="k2U-0a-a1W"/>
