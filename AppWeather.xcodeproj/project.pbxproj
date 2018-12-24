@@ -36,6 +36,9 @@
 		92313FD221C923BD00CDC2FD /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92313FD121C923BD00CDC2FD /* TemperatureUnit.swift */; };
 		92313FD421C923D500CDC2FD /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92313FD321C923D500CDC2FD /* UserDefaultsKeys.swift */; };
 		92313FD621CA74EC00CDC2FD /* SpecialCaracters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92313FD521CA74EC00CDC2FD /* SpecialCaracters.swift */; };
+		92313FDF21CBD93500CDC2FD /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92313FDE21CBD93500CDC2FD /* StringExtension.swift */; };
+		92313FE121CBD9EE00CDC2FD /* LabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92313FE021CBD9EE00CDC2FD /* LabelExtensions.swift */; };
+		92313FE421CBDDA600CDC2FD /* ButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92313FE321CBDDA600CDC2FD /* ButtonExtensions.swift */; };
 		928E00BF21C7C3A800908010 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 928E00C121C7C3A800908010 /* Localizable.strings */; };
 		928E00C421C7D3B200908010 /* htmlStaticTR.html in Resources */ = {isa = PBXBuildFile; fileRef = 928E00C321C7D3B200908010 /* htmlStaticTR.html */; };
 		92DDD03D21B9572F0061EB4F /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDD03C21B9572F0061EB4F /* CreditViewController.swift */; };
@@ -89,9 +92,11 @@
 		92313FD121C923BD00CDC2FD /* TemperatureUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureUnit.swift; sourceTree = "<group>"; };
 		92313FD321C923D500CDC2FD /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		92313FD521CA74EC00CDC2FD /* SpecialCaracters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialCaracters.swift; sourceTree = "<group>"; };
-		928E00BB21C7C1A300908010 /* tr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = tr; path = tr.lproj/Main.storyboard; sourceTree = "<group>"; };
+		92313FDE21CBD93500CDC2FD /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		92313FE021CBD9EE00CDC2FD /* LabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtensions.swift; sourceTree = "<group>"; };
+		92313FE221CBDC0500CDC2FD /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		92313FE321CBDDA600CDC2FD /* ButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtensions.swift; sourceTree = "<group>"; };
 		928E00C021C7C3A800908010 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		928E00C221C7C3AC00908010 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		928E00C321C7D3B200908010 /* htmlStaticTR.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = htmlStaticTR.html; sourceTree = "<group>"; };
 		92DDD03C21B9572F0061EB4F /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
 		92DDD04421BE53D30061EB4F /* htmlStatic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = htmlStatic.html; sourceTree = "<group>"; };
@@ -221,7 +226,8 @@
 		92313FC821C9231D00CDC2FD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9207D6BD21C120460052ADFF /* RatingControl.swift */,
+				92313FDD21CBD91A00CDC2FD /* Extensions */,
+				92313FDC21CBD67400CDC2FD /* Views */,
 				92313FD721CA755D00CDC2FD /* Objects */,
 				92313FD021C923B000CDC2FD /* Enums */,
 				92313FCA21C9234600CDC2FD /* CoreData */,
@@ -286,6 +292,24 @@
 				920F492721AD65C9008C073B /* ForecastTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		92313FDC21CBD67400CDC2FD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9207D6BD21C120460052ADFF /* RatingControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		92313FDD21CBD91A00CDC2FD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				92313FDE21CBD93500CDC2FD /* StringExtension.swift */,
+				92313FE021CBD9EE00CDC2FD /* LabelExtensions.swift */,
+				92313FE321CBDDA600CDC2FD /* ButtonExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -460,6 +484,7 @@
 				920F492C21B8017F008C073B /* JSONParser.swift in Sources */,
 				92FA599E21C249FC0077165C /* SettingsViewController.swift in Sources */,
 				920F48F521989D65008C073B /* AppDelegate.swift in Sources */,
+				92313FE121CBD9EE00CDC2FD /* LabelExtensions.swift in Sources */,
 				9207D6BC21BFD6A20052ADFF /* PopupViewController.swift in Sources */,
 				92313FD221C923BD00CDC2FD /* TemperatureUnit.swift in Sources */,
 				920F491E219B131B008C073B /* WeatherTableViewCell.swift in Sources */,
@@ -474,6 +499,8 @@
 				92313FD421C923D500CDC2FD /* UserDefaultsKeys.swift in Sources */,
 				920F491A2198A0DD008C073B /* AppWeatherUtils.swift in Sources */,
 				9207D6BA21BE8D8A0052ADFF /* DataProvider.swift in Sources */,
+				92313FE421CBDDA600CDC2FD /* ButtonExtensions.swift in Sources */,
+				92313FDF21CBD93500CDC2FD /* StringExtension.swift in Sources */,
 				920F491821989FA9008C073B /* ApiHelper.swift in Sources */,
 				920F491C219B074E008C073B /* Weather.swift in Sources */,
 				920F48FD21989D65008C073B /* AppWeather.xcdatamodeld in Sources */,
@@ -504,7 +531,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				920F48F921989D65008C073B /* Base */,
-				928E00BB21C7C1A300908010 /* tr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -513,7 +539,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				928E00C021C7C3A800908010 /* en */,
-				928E00C221C7C3AC00908010 /* tr */,
+				92313FE221CBDC0500CDC2FD /* tr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var showWeatherImage: UIImageView!
     @IBOutlet weak var showCityName: UILabel!
     
+    let firstRun = UserDefaults.standard.bool(forKey: "firstRun") as Bool
     var weathers = [Weather]()
     var initialWeathers = [Weather]()
     var isCelcius:Bool = true
@@ -39,6 +40,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstRunPopUp()
         
         tabelView.separatorStyle = .none
         tabelView.dataSource = self
@@ -66,7 +68,6 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.performSegue(withIdentifier: "mySegue", sender: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,6 +85,13 @@ class HomeViewController: UIViewController {
  
         
     // MARK: - Configure
+    
+    func firstRunPopUp() {
+        if firstRun {
+            self.performSegue(withIdentifier: "mySegue", sender: nil)
+            UserDefaults.standard.set(true, forKey: "firstRun")
+        }
+    }
     
     func updateCurrentWeather() {
         if let temp = currentWeather?.temp {

@@ -6,8 +6,18 @@
   Copyright © 2018 Can Bas. All rights reserved.
 */
 
-"hello" = "Bu konumu konumlarınıza eklemek istediğinize emin misiniz ?";
+"add_location" = "Bu lokasyonu kaydetmek ister misin?";
 
-"Yes" = "Evet";
+"yes" = "Yes";
 
-"No" = "Hayır";
+"no" = "No";
+
+"not_now" = "Daha Sonra";
+
+"enjoying_app" = "AppWeather'ı beğendiniz mi ?";
+
+"rate" = "beğendiğiniz kadar yıldız verin !";
+
+"fahrenheit" = "Fahrenheit'e çevir";
+
+"add_info" = "Yerlerime eklemek için 2 saniye basılı tutun.";
