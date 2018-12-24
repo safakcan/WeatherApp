@@ -9,13 +9,13 @@
 import UIKit
 
 class ForecastTableViewCell: UITableViewCell {
-    
+
     //MARK: Outlets
-    
+
     @IBOutlet weak var futureImagaeCell: UIImageView!
     @IBOutlet weak var futureDateCell: UILabel!
     @IBOutlet weak var futureTempCell: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -24,5 +24,5 @@ class ForecastTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-    
+
 }

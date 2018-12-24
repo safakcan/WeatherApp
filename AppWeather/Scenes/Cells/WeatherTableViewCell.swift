@@ -11,9 +11,9 @@ import UIKit
 class WeatherTableViewCell: UITableViewCell {
 
     //MARK: Outlets
-    
+
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var weatherName: UILabel!
     @IBOutlet weak var weatherDegree: UILabel!
-    
+
 }
