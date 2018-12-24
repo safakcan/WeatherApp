@@ -9,8 +9,8 @@
 import Foundation
 
 protocol ApiHandler {
-    
-    func fetchWeatherData(lat: Double, long: Double, apiCallType: ApiCallType , callback: @escaping ((Weather)->Void))
-    
-    func fetchForecastData(lat: Double, long: Double, apiCallType: ApiCallType , callback: @escaping (([FutureWeather])->Void))
+
+    func fetchWeatherData(lat: Double, long: Double, apiCallType: ApiCallType, callback: @escaping ((Weather) -> Void))
+
+    func fetchForecastData(lat: Double, long: Double, apiCallType: ApiCallType, callback: @escaping (([FutureWeather]) -> Void))
 }
