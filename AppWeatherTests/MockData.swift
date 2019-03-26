@@ -9,9 +9,6 @@
 import Foundation
 
 class MockData {
-    static let weatherData = "asdasd"
-    static let forecastData = ""
-    
     
     static func readJsonWeather() -> Data? {
         do {

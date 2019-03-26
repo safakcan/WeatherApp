@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:AppWeather.xcodeproj">
+      location = "group:/Users/canbas/Desktop/WorkSpaceIos/AppWeather/AppWeather/htmlStatic.html">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  AppWeather
+
+  Created by Can Bas on 12/17/18.
+  Copyright © 2018 Can Bas. All rights reserved.
+*/
+
+"add_location" = "Bu lokasyonu kaydetmek ister misin?";
+
+"yes" = "Yes";
+
+"no" = "No";
+
+"not_now" = "Daha Sonra";
+
+"enjoying_app" = "AppWeather'ı beğendiniz mi ?";
+
+"rate" = "beğendiğiniz kadar yıldız verin !";
+
+"fahrenheit" = "Fahrenheit'e çevir";
+
+"add_info" = "Yerlerime eklemek için 2 saniye basılı tutun.";

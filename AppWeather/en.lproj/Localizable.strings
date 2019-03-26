@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  AppWeather
+
+  Created by Can Bas on 12/17/18.
+  Copyright © 2018 Can Bas. All rights reserved.
+*/
+
+"add_location" = "Are you sure to add this location to your bookmarks ?";
+
+"yes" = "Yes";
+
+"no" = "No";
+
+"not_now" = "NOT NOW";
+
+"enjoying_app" = "Enjoying AppWeather ?";
+
+"rate" = "Tap a star to rate it on the App Store";
+
+"fahrenheit" = "Switch to Fahrenheit";
+
+"add_info" = "Keep pressing for two seconds to add a place to your bookmarks.";
